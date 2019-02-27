@@ -165,6 +165,7 @@ feature -DYNAMIC_FILTER
 feature RX_SERIAL
 feature LED_STRIP
 feature OSD
+feature AIRMODE
 feature ANTI_GRAVITY
 feature DYNAMIC_FILTER
 
@@ -219,24 +220,24 @@ beacon CAM_CONNECTION_CLOSED
 beacon RC_SMOOTHING_INIT_FAIL
 
 # map
-map AETR1234
+map TAER1234
 
 # serial
 serial 20 1 115200 57600 0 115200
-serial 0 64 115200 57600 0 115200
-serial 1 0 115200 57600 0 115200
+serial 0 0 115200 57600 0 115200
+serial 1 64 115200 57600 0 115200
 serial 2 0 115200 57600 0 115200
 serial 3 0 115200 57600 0 115200
 serial 4 1024 115200 57600 0 115200
 serial 5 0 115200 57600 0 115200
 
 # led
-led 0 0,0::C:0
-led 1 0,0::C:0
-led 2 0,0::C:0
-led 3 0,0::C:0
-led 4 0,0::C:0
-led 5 0,0::C:0
+led 0 0,0::CB:2
+led 1 0,1::CB:2
+led 2 0,2::CB:2
+led 3 2,0::CB:2
+led 4 2,1::CB:2
+led 5 2,2::CB:2
 led 6 0,0::C:0
 led 7 0,0::C:0
 led 8 0,0::C:0
@@ -333,8 +334,8 @@ mode_color 6 10 0
 mode_color 7 0 3
 
 # aux
-aux 0 0 0 900 900 0 0
-aux 1 0 0 900 900 0 0
+aux 0 0 0 1575 2100 0 0
+aux 1 1 1 900 1350 0 0
 aux 2 0 0 900 900 0 0
 aux 3 0 0 900 900 0 0
 aux 4 0 0 900 900 0 0
@@ -413,7 +414,7 @@ rxfail 17 h
 set align_gyro = DEFAULT
 set gyro_hardware_lpf = NORMAL
 set gyro_32khz_hardware_lpf = NORMAL
-set gyro_sync_denom = 1
+set gyro_sync_denom = 4
 set gyro_lowpass_type = PT1
 set gyro_lowpass_hz = 100
 set gyro_lowpass2_type = PT1
@@ -428,8 +429,8 @@ set gyro_offset_yaw = 0
 set gyro_overflow_detect = ALL
 set yaw_spin_recovery = ON
 set yaw_spin_threshold = 1950
-set gyro_use_32khz = ON
-set gyro_to_use = SECOND
+set gyro_use_32khz = OFF
+set gyro_to_use = FIRST
 set dyn_notch_quality = 70
 set dyn_notch_width_percent = 50
 set align_acc = DEFAULT
@@ -508,7 +509,7 @@ set failsafe_throttle_low_delay = 100
 set failsafe_procedure = DROP
 set align_board_roll = 180
 set align_board_pitch = 0
-set align_board_yaw = 90
+set align_board_yaw = 0
 set gimbal_mode = NORMAL
 set bat_capacity = 0
 set vbat_max_cell_voltage = 43
@@ -582,7 +583,7 @@ set gps_rescue_min_sats = 8
 set deadband = 0
 set yaw_deadband = 0
 set yaw_control_reversed = OFF
-set pid_process_denom = 4
+set pid_process_denom = 1
 set runaway_takeoff_prevention = ON
 set runaway_takeoff_deactivate_delay = 500
 set runaway_takeoff_deactivate_throttle_percent = 25
@@ -802,4 +803,3 @@ set tpa_rate = 10
 set tpa_breakpoint = 1650
 set throttle_limit_type = OFF
 set throttle_limit_percent = 100
-

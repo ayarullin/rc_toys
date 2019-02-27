@@ -19,22 +19,34 @@ resource MOTOR 4 B05
 
 
 # feature
+feature AIRMODE
 
 # beeper
 
 # beacon
 
 # map
+map TAER1234
 
 # serial
+serial 0 0 115200 57600 0 115200
+serial 1 64 115200 57600 0 115200
 
 # led
+led 0 0,0::CB:2
+led 1 0,1::CB:2
+led 2 0,2::CB:2
+led 3 2,0::CB:2
+led 4 2,1::CB:2
+led 5 2,2::CB:2
 
 # color
 
 # mode_color
 
 # aux
+aux 0 0 0 1575 2100 0 0
+aux 1 1 1 900 1350 0 0
 
 # adjrange
 
@@ -45,14 +57,13 @@ resource MOTOR 4 B05
 # rxfail
 
 # master
-set gyro_use_32khz = ON
-set gyro_to_use = SECOND
+set gyro_sync_denom = 4
 set serialrx_provider = CRSF
 set motor_pwm_protocol = PROSHOT1000
 set align_board_roll = 180
-set align_board_yaw = 90
 set yaw_motors_reversed = ON
 set small_angle = 180
+set pid_process_denom = 1
 
 # profile
 profile 0
@@ -61,68 +72,3 @@ profile 0
 # rateprofile
 rateprofile 0
 
-
-# diff
-
-# version
-# Betaflight / OMNINXT7 (ONX7) 3.5.6 Feb 16 2019 / 13:32:54 (c28ca22f9) MSP API: 1.40
-
-board_name OMNINXT7
-manufacturer_id 
-
-# name
-name AZAT
-
-# resources
-resource MOTOR 1 B01
-resource MOTOR 4 B05
-
-# mixer
-
-# servo
-
-# servo mix
-
-
-# feature
-
-# beeper
-
-# beacon
-
-# map
-
-# serial
-
-# led
-
-# color
-
-# mode_color
-
-# aux
-
-# adjrange
-
-# rxrange
-
-# vtx
-
-# rxfail
-
-# master
-set gyro_use_32khz = ON
-set gyro_to_use = SECOND
-set serialrx_provider = CRSF
-set motor_pwm_protocol = PROSHOT1000
-set align_board_roll = 180
-set align_board_yaw = 90
-set yaw_motors_reversed = ON
-set small_angle = 180
-
-# profile
-profile 0
-
-
-# rateprofile
-rateprofile 0
