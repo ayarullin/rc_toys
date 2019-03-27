@@ -163,6 +163,8 @@ feature -ESC_SENSOR
 feature -ANTI_GRAVITY
 feature -DYNAMIC_FILTER
 feature RX_SERIAL
+feature GPS
+feature TELEMETRY
 feature LED_STRIP
 feature OSD
 feature AIRMODE
@@ -224,20 +226,20 @@ map TAER1234
 
 # serial
 serial 20 1 115200 57600 0 115200
-serial 0 0 115200 57600 0 115200
+serial 0 2048 115200 57600 0 115200
 serial 1 64 115200 57600 0 115200
 serial 2 0 115200 57600 0 115200
 serial 3 0 115200 57600 0 115200
 serial 4 1024 115200 57600 0 115200
-serial 5 0 115200 57600 0 115200
+serial 5 2 115200 57600 0 115200
 
 # led
-led 0 0,0::CB:2
-led 1 0,1::CB:2
-led 2 0,2::CB:2
-led 3 2,0::CB:2
-led 4 2,1::CB:2
-led 5 2,2::CB:2
+led 0 0,0::L:2
+led 1 0,1::L:2
+led 2 0,2::L:2
+led 3 2,0::L:2
+led 4 2,1::L:2
+led 5 2,2::L:2
 led 6 0,0::C:0
 led 7 0,0::C:0
 led 8 0,0::C:0
@@ -336,8 +338,8 @@ mode_color 7 0 3
 # aux
 aux 0 0 0 1575 2100 0 0
 aux 1 1 1 900 1350 0 0
-aux 2 0 0 900 900 0 0
-aux 3 0 0 900 900 0 0
+aux 2 13 2 1475 2100 0 0
+aux 3 26 3 1550 2100 0 0
 aux 4 0 0 900 900 0 0
 aux 5 0 0 900 900 0 0
 aux 6 0 0 900 900 0 0
@@ -414,7 +416,7 @@ rxfail 17 h
 set align_gyro = DEFAULT
 set gyro_hardware_lpf = NORMAL
 set gyro_32khz_hardware_lpf = NORMAL
-set gyro_sync_denom = 4
+set gyro_sync_denom = 1
 set gyro_lowpass_type = PT1
 set gyro_lowpass_hz = 100
 set gyro_lowpass2_type = PT1
@@ -438,7 +440,7 @@ set acc_hardware = AUTO
 set acc_lpf_hz = 10
 set acc_trim_pitch = 0
 set acc_trim_roll = 0
-set acc_calibration = 0,0,0
+set acc_calibration = 164,16,341
 set align_mag = DEFAULT
 set mag_bustype = I2C
 set mag_i2c_device = 1
@@ -517,7 +519,7 @@ set vbat_full_cell_voltage = 41
 set vbat_min_cell_voltage = 33
 set vbat_warning_cell_voltage = 35
 set vbat_hysteresis = 1
-set current_meter = ADC
+set current_meter = ESC
 set battery_meter = ADC
 set vbat_detect_cell_voltage = 30
 set use_vbat_alerts = ON
@@ -559,7 +561,7 @@ set imu_dcm_ki = 0
 set small_angle = 180
 set auto_disarm_delay = 5
 set gyro_cal_on_first_arm = OFF
-set gps_provider = NMEA
+set gps_provider = UBLOX
 set gps_sbas_mode = AUTO
 set gps_auto_config = ON
 set gps_auto_baud = OFF
@@ -583,7 +585,7 @@ set gps_rescue_min_sats = 8
 set deadband = 0
 set yaw_deadband = 0
 set yaw_control_reversed = OFF
-set pid_process_denom = 1
+set pid_process_denom = 4
 set runaway_takeoff_prevention = ON
 set runaway_takeoff_deactivate_delay = 500
 set runaway_takeoff_deactivate_throttle_percent = 25
@@ -619,14 +621,14 @@ set osd_esc_current_alarm = -1
 set osd_core_temp_alarm = 70
 set osd_ah_max_pit = 20
 set osd_ah_max_rol = 40
-set osd_tim1 = 2560
+set osd_tim1 = 2561
 set osd_tim2 = 2561
-set osd_vbat_pos = 234
+set osd_vbat_pos = 2295
 set osd_rssi_pos = 234
-set osd_tim_1_pos = 234
+set osd_tim_1_pos = 2486
 set osd_tim_2_pos = 234
 set osd_remaining_time_estimate_pos = 234
-set osd_flymode_pos = 234
+set osd_flymode_pos = 2135
 set osd_anti_gravity_pos = 234
 set osd_g_force_pos = 234
 set osd_throttle_pos = 234
@@ -635,23 +637,23 @@ set osd_crosshairs_pos = 205
 set osd_ah_sbar_pos = 206
 set osd_ah_pos = 78
 set osd_current_pos = 234
-set osd_mah_drawn_pos = 234
-set osd_craft_name_pos = 234
+set osd_mah_drawn_pos = 2465
+set osd_craft_name_pos = 2103
 set osd_gps_speed_pos = 234
-set osd_gps_lon_pos = 234
-set osd_gps_lat_pos = 234
+set osd_gps_lon_pos = 2082
+set osd_gps_lat_pos = 2114
 set osd_gps_sats_pos = 234
-set osd_home_dir_pos = 234
-set osd_home_dist_pos = 234
+set osd_home_dir_pos = 2285
+set osd_home_dist_pos = 2306
 set osd_compass_bar_pos = 234
-set osd_altitude_pos = 234
+set osd_altitude_pos = 2272
 set osd_pid_roll_pos = 234
 set osd_pid_pitch_pos = 234
 set osd_pid_yaw_pos = 234
 set osd_debug_pos = 234
 set osd_power_pos = 234
 set osd_pidrate_profile_pos = 234
-set osd_warnings_pos = 2377
+set osd_warnings_pos = 2440
 set osd_avg_cell_voltage_pos = 234
 set osd_pit_ang_pos = 234
 set osd_rol_ang_pos = 234
@@ -683,11 +685,11 @@ set debug_mode = NONE
 set rate_6pos_switch = OFF
 set cpu_overclock = OFF
 set pwr_on_arm_grace = 5
-set vtx_band = 4
-set vtx_channel = 1
-set vtx_power = 1
+set vtx_band = 5
+set vtx_channel = 8
+set vtx_power = 2
 set vtx_low_power_disarm = OFF
-set vtx_freq = 5740
+set vtx_freq = 5917
 set vtx_pit_mode_freq = 0
 set vtx_halfduplex = ON
 set vcd_video_system = AUTO
@@ -803,3 +805,5 @@ set tpa_rate = 10
 set tpa_breakpoint = 1650
 set throttle_limit_type = OFF
 set throttle_limit_percent = 100
+
+

@@ -19,6 +19,8 @@ resource MOTOR 4 B05
 
 
 # feature
+feature GPS
+feature TELEMETRY
 feature AIRMODE
 
 # beeper
@@ -29,16 +31,17 @@ feature AIRMODE
 map TAER1234
 
 # serial
-serial 0 0 115200 57600 0 115200
+serial 0 2048 115200 57600 0 115200
 serial 1 64 115200 57600 0 115200
+serial 5 2 115200 57600 0 115200
 
 # led
-led 0 0,0::CB:2
-led 1 0,1::CB:2
-led 2 0,2::CB:2
-led 3 2,0::CB:2
-led 4 2,1::CB:2
-led 5 2,2::CB:2
+led 0 0,0::L:2
+led 1 0,1::L:2
+led 2 0,2::L:2
+led 3 2,0::L:2
+led 4 2,1::L:2
+led 5 2,2::L:2
 
 # color
 
@@ -47,6 +50,8 @@ led 5 2,2::CB:2
 # aux
 aux 0 0 0 1575 2100 0 0
 aux 1 1 1 900 1350 0 0
+aux 2 13 2 1475 2100 0 0
+aux 3 26 3 1550 2100 0 0
 
 # adjrange
 
@@ -57,13 +62,30 @@ aux 1 1 1 900 1350 0 0
 # rxfail
 
 # master
-set gyro_sync_denom = 4
+set acc_calibration = 164,16,341
 set serialrx_provider = CRSF
 set motor_pwm_protocol = PROSHOT1000
 set align_board_roll = 180
+set current_meter = ESC
 set yaw_motors_reversed = ON
 set small_angle = 180
-set pid_process_denom = 1
+set gps_provider = UBLOX
+set osd_tim1 = 2561
+set osd_vbat_pos = 2295
+set osd_tim_1_pos = 2486
+set osd_flymode_pos = 2135
+set osd_mah_drawn_pos = 2465
+set osd_craft_name_pos = 2103
+set osd_gps_lon_pos = 2082
+set osd_gps_lat_pos = 2114
+set osd_home_dir_pos = 2285
+set osd_home_dist_pos = 2306
+set osd_altitude_pos = 2272
+set osd_warnings_pos = 2440
+set vtx_band = 5
+set vtx_channel = 8
+set vtx_power = 2
+set vtx_freq = 5917
 
 # profile
 profile 0
@@ -71,4 +93,5 @@ profile 0
 
 # rateprofile
 rateprofile 0
+
 
