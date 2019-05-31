@@ -1,15 +1,24 @@
-# version
-# Betaflight / OMNINXT7 (ONX7) 3.5.6 Feb 16 2019 / 13:32:54 (c28ca22f9) MSP API: 1.40
+# diff
 
-board_name OMNINXT7
+# version
+# Betaflight / OMNIBUSF4V6 (OBV6) 4.0.2 May  5 2019 / 12:08:56 (56bdc8d26) MSP API: 1.41
+
+# start the command batch
+batch start
+
+board_name OMNIBUSF4V6
 manufacturer_id 
 
 # name
 name AZAT
 
 # resources
-resource MOTOR 1 B01
-resource MOTOR 4 B05
+resource MOTOR 1 B05
+resource MOTOR 4 B00
+
+# timer
+
+# dma
 
 # mixer
 
@@ -21,37 +30,33 @@ resource MOTOR 4 B05
 # feature
 feature GPS
 feature TELEMETRY
-feature AIRMODE
+feature ESC_SENSOR
 
 # beeper
 
 # beacon
+beacon RX_LOST
+beacon RX_SET
 
 # map
 map TAER1234
 
 # serial
-serial 0 2048 115200 57600 0 115200
-serial 1 64 115200 57600 0 115200
-serial 5 2 115200 57600 0 115200
+serial 0 64 115200 57600 0 115200
+serial 2 2 115200 57600 0 115200
+serial 3 1024 115200 57600 0 115200
+serial 5 0 115200 57600 0 115200
 
 # led
-led 0 0,0::L:2
-led 1 0,1::L:2
-led 2 0,2::L:2
-led 3 2,0::L:2
-led 4 2,1::L:2
-led 5 2,2::L:2
 
 # color
 
 # mode_color
 
 # aux
-aux 0 0 0 1575 2100 0 0
-aux 1 1 1 900 1350 0 0
-aux 2 13 2 1475 2100 0 0
-aux 3 26 3 1550 2100 0 0
+aux 0 0 0 1500 2100 0 0
+aux 1 1 1 900 1425 0 0
+aux 2 13 2 1400 2100 0 0
 
 # adjrange
 
@@ -61,8 +66,12 @@ aux 3 26 3 1550 2100 0 0
 
 # rxfail
 
+# display_name
+
 # master
-set acc_calibration = 164,16,341
+set acc_calibration = -205,-61,627
+set mag_hardware = NONE
+set rssi_channel = 11
 set serialrx_provider = CRSF
 set motor_pwm_protocol = PROSHOT1000
 set align_board_roll = 180
@@ -70,28 +79,29 @@ set current_meter = ESC
 set yaw_motors_reversed = ON
 set small_angle = 180
 set gps_provider = UBLOX
-set osd_tim1 = 2561
-set osd_vbat_pos = 2295
-set osd_tim_1_pos = 2486
-set osd_flymode_pos = 2135
+set osd_vbat_pos = 2518
+set osd_rssi_pos = 2200
+set osd_tim_2_pos = 2497
+set osd_flymode_pos = 2103
+set osd_current_pos = 2486
 set osd_mah_drawn_pos = 2465
-set osd_craft_name_pos = 2103
-set osd_gps_lon_pos = 2082
-set osd_gps_lat_pos = 2114
-set osd_home_dir_pos = 2285
-set osd_home_dist_pos = 2306
-set osd_altitude_pos = 2272
-set osd_warnings_pos = 2440
-set vtx_band = 5
-set vtx_channel = 8
-set vtx_power = 2
-set vtx_freq = 5917
+set osd_craft_name_pos = 2508
+set osd_gps_lon_pos = 2209
+set osd_gps_lat_pos = 2241
+set osd_gps_sats_pos = 2273
+set osd_home_dir_pos = 2318
+set osd_home_dist_pos = 2338
+set osd_altitude_pos = 2305
+set osd_warnings_pos = 14729
 
 # profile
-profile 0
+profile 2
 
 
 # rateprofile
 rateprofile 0
 
+
+# end the command batch
+batch end
 
